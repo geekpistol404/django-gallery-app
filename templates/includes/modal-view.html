@@ -1,0 +1,25 @@
+<!-- View image modal -->
+<div class="modal fade" id="view-{{ image.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="{{ image.image.url }}" class="w-100 shadow-1-strong rounded mb-4" alt="{{ image.alt }}" />
+            </div>
+            <div class="modal-body">
+                <h5 class="modal-title" id="exampleModalLabel">{{ image.caption }}</h5>
+                <p>{{ image.description }}</p>
+                <div class="text-end">
+                    <p><b>Author: </b>{{ image.author }}</p>
+                    <p><b>Date created: </b>{{ image.created }}</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- Render delete button if authenticated either as author or staff -->
+                {% if user.id == image.author.id or user.is_staff %}
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-{{ image.id }}">Delete</button>
+                {% endif %}
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

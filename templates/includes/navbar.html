@@ -1,0 +1,44 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-light">
+    <a class="navbar-brand" href="{% url 'feed' %}">ImageShare.Net</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar menu -->
+    <div class="collapse navbar-collapse mr-auto" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'feed' %}">Feed</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'user-list' %}">People</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {% if user.is_authenticated %}
+                    {{ user.username }}
+                    {% else %}
+                    Profile
+                    {% endif %}
+                </a>
+                <!-- change dropdown menu if user is authenticated -->
+                {% if user.is_authenticated %}
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'profile' username=user.username %}">Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'upload' %}">Upload new image</a>
+                        <a class="dropdown-item disabled" href="#">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                {% else %}
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                        <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                    </div>
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+</nav>

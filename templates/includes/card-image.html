@@ -1,0 +1,22 @@
+{% if user.is_authenticated %}
+    <!-- Image card -->
+    <div class="card mt-2 card-gray">
+        <img src="{{ image.image.url }}" class="w-100 shadow-1-strong rounded mb-4" alt="{{ image.alt }}" />
+
+        <div class="card-body">
+            <h5 class="card-title">{{ image.caption }}</h5>
+
+            <b>Author: </b>{{ image.author }}<br/>
+            <b>Date created: </b>{{ image.created }}<br/>
+
+            <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#view-{{ image.id }}">View</button>
+
+            <!-- Render delete button if authenticated either as author or staff -->
+            {% if user.id == image.author.id or user.is_staff %}
+                <button type="button" class="btn btn-danger mt-3" data-toggle="modal" data-target="#delete-{{ image.id }}">Delete</button>
+            {% endif %}
+        </div>
+    </div>
+{% else %}
+    <img src="{{ image.image.url }}" class="w-100 shadow-1-strong rounded mb-4" alt="{{ image.alt }}" />
+{% endif %}

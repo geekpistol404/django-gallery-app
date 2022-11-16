@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Users block-->
+    <h1>Profile {{ profile.username }}</h1>
+
+    <div class="table-group-divider"></div>
+    <!-- Feed block-->
+    <div class="grid-container mt-5">
+        {% include "includes/image-grid.html" %}
+    </div>
+{% endblock %}

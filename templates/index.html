@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-centered text-center">
+                <h2 class="mt-5 mb-3">Welcome to ImageShareNet</h2>
+                <h1 class="mt-5 mb-3">Please, login or register</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-centered mt-3 text-center">
+                <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+                <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+                <a href="{% url 'feed' %}" class="btn btn-primary">Feed</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

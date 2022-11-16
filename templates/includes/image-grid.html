@@ -1,0 +1,31 @@
+<!-- Image grid -->
+<div class="grid-container mt-5">
+    <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+            <!-- Render images inside first column-->
+            {% for image in images.0 %}
+                {% include "includes/card-image.html" %}
+                {% include "includes/modal-view.html" %}
+                {% include "includes/modal-delete.html" %}
+            {% endfor %}
+        </div>
+
+        <div class="col-lg-4 mb-4 mb-lg-0">
+            <!-- Render images inside second column-->
+            {% for image in images.1 %}
+                {% include "includes/card-image.html" %}
+                {% include "includes/modal-view.html" %}
+                {% include "includes/modal-delete.html" %}
+            {% endfor %}
+        </div>
+
+        <div class="col-lg-4 mb-4 mb-lg-0">
+            <!-- Render images inside third column-->
+            {% for image in images.2 %}
+                {% include "includes/card-image.html" %}
+                {% include "includes/modal-view.html" %}
+                {% include "includes/modal-delete.html" %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

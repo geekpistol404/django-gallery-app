@@ -1,0 +1,15 @@
+<!-- User card -->
+<div class="card mt-2 ms-2 card-gray">
+    {% if user.is_staff %}
+    <img src="/media/avatars/admin.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="{{ image.alt }}" />
+    {% else %}
+    <img src="/media/avatars/user.jpg" class="w-100 shadow-1-strong rounded mb-4" alt="{{ image.alt }}" />
+    {% endif %}
+    <div class="card-body">
+        <h5 class="card-title">{{ user.username }}</h5>
+
+        <b>Date created: </b>{{ user.created }}<br/>
+
+        <a class="btn btn-primary" href="{% url 'profile' username=user.username %}">Profile</a>
+    </div>
+</div>
